@@ -18,6 +18,14 @@ export class LoginRoutes {
       });
     });
 
+    await page.route("**/api/strategy/actual/", (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: [],
+      });
+    });
+
     await page.route("**/fonts.googleapis.com/**", (route) => {
       route.fulfill({
         status: 200,
@@ -68,95 +76,77 @@ export class RegisterRoutes {
   }
 }
 
+
 export class PostGenerateRoutes {
   constructor(socialMedia) {
     this.socialMedia = socialMedia;
   }
 
   async setup(page) {
-    await page.route("**/api/**", async (route, request) => {
-      const url = request.url();
-      const method = request.method();
-      console.log(`[MOCK] ${method} ${url}`);
+    // Перехватываем запрос на сохранение поста
+    await page.route("**/api/post/save", (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          message: "Задание добавлено в очередь",
+          jobId: 666,
+        }),
+      });
+    });
 
-      if (url.includes("/api/post/generate/") && method === "POST") {
-        return route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify({
-            message: "Задание добавлено в очередь",
-            jobId: 666,
-          }),
-        });
-      }
+    // Перехватываем запрос на получение контент-плана
+    await page.route("**/api/content-plan/**", (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          id: 2451,
+          socialNetwork: this.socialMedia,
+          week: 1,
+          comment: null,
+          weekDay: "",
+          contentType: "Post",
+          description: `Пост для ${this.socialMedia}`,
+          leadingQuestions: null,
+          details: null,
+          date: new Date().toISOString(),
+          model: "gpt-4o",
+          deleted: false,
+          deletedAt: null,
+          forIndependentPosts: true,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          UserId: 196,
+        }),
+      });
+    });
 
-      if (url.includes("/api/content-plan/") && method === "GET") {
-        return route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify({
-            id: 2451,
-            socialNetwork: this.socialMedia,
-            week: 1,
-            comment: null,
-            weekDay: "",
-            contentType: "Post",
-            description: "Пост мокнутный hellyeah",
-            leadingQuestions: null,
-            details: null,
-            date: "2025-07-16T06:34:41.436Z",
-            model: "gpt-4o",
-            deleted: false,
-            deletedAt: null,
-            forIndependentPosts: true,
-            createdAt: "2025-07-16T06:07:54.786Z",
-            updatedAt: "2025-07-16T06:34:41.437Z",
-            UserId: 196,
-          }),
-        });
-      }
-
-      if (url.includes("/api/post/actual/")) {
-        return route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify({
-            id: 1308,
-            post: "Mocked post hellyeah",
-            hashtags: "#Mock #IT #QA #Automation #imean #imean.io",
-            media: "Тестировщик сидит за ноутом и не понимает как правильно мокать запросы",
-            approved: false,
-            approvedExtended: "not_approved",
-            active: true,
-            version: 1,
-            images: [],
-            video: null,
-            countGenerateImage: 0,
-            published: false,
-            published_statuses: null,
-            publishedAt: null,
-            broken: false,
-            brokenFb: false,
-            brokenIn: false,
-            brokenLn: false,
-            attempts: 0,
-            attemptsFb: 0,
-            attemptsIn: 0,
-            publishError: null,
-            url: null,
-            visible: true,
-            modifiedModerator: false,
-            useLogo: false,
-            imagesWithLogo: null,
-            originalText: null,
-            createdAt: "2025-07-15T12:16:00.476Z",
-            updatedAt: "2025-07-15T12:16:00.519Z",
-            ContentPlanId: 2412,
-            UserId: 196,
-          }),
-        });
-      }
-      return route.continue();
+    // Перехватываем запрос на получение актуального поста
+    await page.route("**/api/post/actual/*", (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          id: 1308,
+          post: `Мокнутый пост для ${this.socialMedia}`,
+          hashtags:"#Mock #QA #Playwright #imean" ,
+          media: "Искусственный интеллект тестирует сам себя" ,
+          approved: false,
+          approvedExtended: "not_approved",
+          active: true,
+          version: 1,
+          images: [],
+          video: null,
+          countGenerateImage: 0,
+          published: false,
+          visible: true,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          ContentPlanId: 2412,
+          UserId: 196,
+        }),
+      });
     });
   }
 }

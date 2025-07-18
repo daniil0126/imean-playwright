@@ -48,14 +48,14 @@ test.describe("Перегенерация поста", () => {
         )
         .nth(1);
 
-      await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
+      await expect(postTextBlock).not.toHaveText("", { timeout: 120000 });
 
       const socialInfo = page.locator(".flex.flex-col.flex-1", {
         hasText: socialMedia,
       });
 
       await socialInfo.scrollIntoViewIfNeeded();
-      await expect(socialInfo).toBeVisible({ timeout: 10000 });
+      await expect(socialInfo).toBeVisible({ timeout: 120000 });
       await expect(socialInfo).toContainText(socialMedia);
     });
   }

@@ -14,11 +14,11 @@
         },
         {
           "name": "user",
-          "value": "{\"accessToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImQ3MDM1ODIxQGdtYWlsLmNvbSIsImlkIjoxOTYsInN1YnNjcmlwdGlvbkxldmVsIjp7fSwidXNlclN1YnNjcmlwdGlvbiI6e30sImxhbmd1YWdlR2VuZXJhdGlvbiI6InJ1Iiwib3JnYW5pemF0aW9uSWQiOm51bGwsImN1cmF0b3IiOmZhbHNlLCJpYXQiOjE3NTI2NTIxMTcsImV4cCI6MTc1MjczODUxN30.OdLf5s5DJ0sfqor2NVwh-G8FthSTyFd2tYyYgd9rUUE\",\"id\":196,\"name\":\"daniil\",\"email\":\"d7035821@gmail.com\",\"strategiesCount\":0,\"organizationId\":null,\"curator\":false,\"moderatorOrg\":false}"
+          "value": "{\"accessToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImQ3MDM1ODIxQGdtYWlsLmNvbSIsImlkIjoxOTYsInN1YnNjcmlwdGlvbkxldmVsIjp7fSwidXNlclN1YnNjcmlwdGlvbiI6e30sImxhbmd1YWdlR2VuZXJhdGlvbiI6InJ1Iiwib3JnYW5pemF0aW9uSWQiOm51bGwsImN1cmF0b3IiOmZhbHNlLCJpYXQiOjE3NTI3NTcyMDUsImV4cCI6MTc1Mjg0MzYwNX0.pcOlvQZWpVbkOuFjvTx4uDz-kkOEiTeOmptC98XmcAA\",\"id\":196,\"name\":\"daniil\",\"email\":\"d7035821@gmail.com\",\"strategiesCount\":0,\"organizationId\":null,\"curator\":false,\"moderatorOrg\":false,\"languageGeneration\":\"ru\"}"
         },
         {
           "name": "cacheHasRefreshed",
-          "value": "2025-07-16T07:48:33.176Z"
+          "value": "2025-07-17T13:00:00.846Z"
         }
       ]
     }

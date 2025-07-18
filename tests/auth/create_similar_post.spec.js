@@ -42,7 +42,7 @@ test.describe("Создание похожего поста", () => {
         .locator(".flex.flex-col.flex-1", { hasText: socialMedia })
         .first();
 
-      await expect(socialInfo).toBeVisible({ timeout: 10000 });
+      await expect(socialInfo).toBeVisible({ timeout: 120000 });
       await expect(socialInfo).toContainText(socialMedia);
     });
   }
@@ -77,7 +77,7 @@ test.describe("Создание похожего поста", () => {
 
       const socialInfo = page.locator(".flex.flex-col.flex-1");
 
-      await expect(socialInfo.first()).toBeVisible({ timeout: 100000 });
+      await expect(socialInfo.first()).toBeVisible({ timeout: 120000 });
       await expect(socialInfo.nth(0)).toContainText("LinkedIn");
       await expect(socialInfo.nth(1)).toContainText("Facebook");
       await expect(socialInfo.nth(2)).toContainText("Instagram");

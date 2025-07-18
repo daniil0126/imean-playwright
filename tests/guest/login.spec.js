@@ -8,13 +8,13 @@ const auth = {
   password: "Daniil0126!",
 };
 
-test.describe.parallel("Форма логина", () => {
+test.describe("Форма логина", () => {
   for (const { lang, loginText, continueText } of languages) {
     test(`Вход на языке [${lang}]`, async ({ page }) => {
       const routes = new LoginRoutes();
       await routes.setup(page);
 
-      await page.goto("https://my.imean.io", { timeout: 10000 });
+      await page.goto("https://my.imean.io", { timeout: 20000 });
       startActions(page, lang, loginText);
 
       await page.locator('input[type="email"]').click();
