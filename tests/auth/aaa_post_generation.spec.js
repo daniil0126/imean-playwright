@@ -15,6 +15,8 @@ test.describe("Генерация поста", () => {
         await page.waitForTimeout(3000);
         await page.getByText("LinkedIn", { exact: true }).click();
         await page.getByText(socialMedia, { exact: false }).click();
+      }else{
+        await page.waitForTimeout(2000);
       }
 
       await saveFormat(page);
