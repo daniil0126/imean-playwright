@@ -10,10 +10,7 @@ test.describe("Создание похожего поста", () => {
       await postMock.setup(page);
 
       await page.goto("https://my.imean.io/create-post/2335");
-
-      await page.getByRole("button", 
-        { name: /Создать похожий пост|Create a similar post|Ұқсас пост жасау/i }
-      ).click();
+      await page.getByRole("button", { name: "Создать похожий пост" }).click();
 
       for (const { socialMedia: name } of socials) {
         if (name !== socialMedia) {
@@ -23,12 +20,17 @@ test.describe("Создание похожего поста", () => {
         }
       }
 
-      await page.getByRole("button", 
-        { name: /Создать|Generate|Құру/i, exact: true }
-      ).click();
+      await page.getByRole("button", { name: "Создать", exact: true }).click();
 
       await expect(page).toHaveURL(/\/create-post\/\d+$/, { timeout: 10000 });
 
+      const postTextBlock = page
+        .locator(
+          ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
+        )
+        .nth(1);
+
+      await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
       const socialInfo = page
         .locator(".flex.flex-col.flex-1", { hasText: socialMedia })
         .first();
@@ -40,15 +42,18 @@ test.describe("Создание похожего поста", () => {
   test("Создание похожего поста для всех платформ", async ({ page }) => {
     await page.goto("https://my.imean.io/create-post/2335");
 
-    await page.getByRole("button", 
-      { name: /Создать похожий пост|Create a similar post|Ұқсас пост жасау/i }
-    ).click();
-
-    await page.getByRole("button", 
-      { name: /Создать|Generate|Құру/i, exact: true }
-    ).click();
+    await page.getByRole("button", { name: "Создать похожий пост" }).click();
+    await page.getByRole("button", { name: "Создать", exact: true }).click();
 
     await expect(page).toHaveURL(/\/create-post\/\d+$/, { timeout: 10000 });
+
+    const postTextBlock = page
+      .locator(
+        ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
+      )
+      .nth(1);
+
+    await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
 
     const socialInfo = page.locator(".flex.flex-col.flex-1");
 

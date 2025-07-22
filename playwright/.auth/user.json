@@ -6,7 +6,7 @@
       "localStorage": [
         {
           "name": "ln",
-          "value": "en"
+          "value": "ru"
         },
         {
           "name": "isHideWelcomeTutorialModal",
@@ -14,11 +14,11 @@
         },
         {
           "name": "user",
-          "value": "{\"accessToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImQ3MDM1ODIxQGdtYWlsLmNvbSIsImlkIjoxOTYsInN1YnNjcmlwdGlvbkxldmVsIjp7fSwidXNlclN1YnNjcmlwdGlvbiI6e30sImxhbmd1YWdlR2VuZXJhdGlvbiI6ImVuIiwib3JnYW5pemF0aW9uSWQiOm51bGwsImN1cmF0b3IiOmZhbHNlLCJpYXQiOjE3NTMxNjc4MDUsImV4cCI6MTc1MzI1NDIwNX0.5Up9dmleXhE63nAc-n75rzh1pT4HzQigZmIZhdlF5nI\",\"id\":196,\"name\":\"daniil\",\"email\":\"d7035821@gmail.com\",\"strategiesCount\":0,\"organizationId\":null,\"curator\":false,\"moderatorOrg\":false}"
+          "value": "{\"accessToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImQ3MDM1ODIxQGdtYWlsLmNvbSIsImlkIjoxOTYsInN1YnNjcmlwdGlvbkxldmVsIjp7fSwidXNlclN1YnNjcmlwdGlvbiI6e30sImxhbmd1YWdlR2VuZXJhdGlvbiI6InJ1Iiwib3JnYW5pemF0aW9uSWQiOm51bGwsImN1cmF0b3IiOmZhbHNlLCJpYXQiOjE3NTMxODY2NzgsImV4cCI6MTc1MzI3MzA3OH0.2xlRbGX7UvgheThY1CLdLSDuaIlF83o4Afv9QCsiCXU\",\"id\":196,\"name\":\"daniil\",\"email\":\"d7035821@gmail.com\",\"strategiesCount\":0,\"organizationId\":null,\"curator\":false,\"moderatorOrg\":false,\"languageGeneration\":\"ru\"}"
         },
         {
           "name": "cacheHasRefreshed",
-          "value": "2025-07-22T07:03:21.414Z"
+          "value": "2025-07-22T12:17:54.158Z"
         }
       ]
     }

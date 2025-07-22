@@ -37,14 +37,22 @@ export async function saveFormat(page) {
   const formatBtn = page.getByRole("button", {
     name: /Формат публикации|Publication format|Пост форматы/i,
   });
+  await expect(formatBtn).toBeVisible()
+  await formatBtn.scrollIntoViewIfNeeded()
   await formatBtn.click();
 
-  const postLength = page.locator(".ant-input-number-input").nth(0);
+  // const postLength = page.locator(".ant-input-number-input").first();
+  const postLength = page.locator('div').
+  filter({ hasText: /^Длина поста \(слова\):$/ }).
+  getByRole('spinbutton')
+  await postLength.click()
   await postLength.clear();
   await postLength.fill("30");
 
-  await page
-    .getByText(/Запомнить выбор|Memorize the selection|Таңдауды есте сақтаңыз/i)
-    .click();
-  await page.getByText(/Подтвердить|Accept|Қабылдау/i).click();
+  await page.getByRole('button', 
+    {name: /Запомнить выбор|Memorize the selection|Таңдауды есте сақтаңыз/i}
+  ).click();
+  await page.getByRole('button', 
+    {name: /Подтвердить|Accept|Қабылдау/i}
+  ).click();
 }

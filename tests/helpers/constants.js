@@ -42,6 +42,6 @@ export const languages = [
 
 export const socials = [
     {socialMedia: "Facebook"},
-    {socialMedia: "LinkedIn"},
     {socialMedia: "Instagram"},
+    {socialMedia: "LinkedIn"},
 ]
