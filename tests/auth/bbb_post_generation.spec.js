@@ -72,11 +72,11 @@ test.describe("Генерация поста", () => {
 
     await expect(page).toHaveURL(/\/create-post\/\d+$/, {timeout: 10000});
 
-    const postTextBlock = page
-      .locator(
-        ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
-      )
-      .nth(0);
+    // const postTextBlock = page
+    //   .locator(
+    //     ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
+    //   )
+    //   .nth(0);
 
     // await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
 

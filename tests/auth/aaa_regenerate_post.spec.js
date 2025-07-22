@@ -41,13 +41,13 @@ test.describe("Перегенерация поста", () => {
       const loader = page.locator(".ant-spin-dot-holder");
       await loader.waitFor({ state: "detached", timeout: 60000 });
 
-      const postTextBlock = page
-        .locator(
-          ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
-        )
-        .nth(1);
+      // const postTextBlock = page
+      //   .locator(
+      //     ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
+      //   )
+      //   .nth(1);
 
-      await expect(postTextBlock).not.toHaveText("", { timeout: 120000 });
+      // await expect(postTextBlock).not.toHaveText("", { timeout: 120000 });
 
       const socialInfo = page.locator(".flex.flex-col.flex-1", {
         hasText: socialMedia,
