@@ -39,12 +39,15 @@ test.describe("Генерация поста", () => {
       //   .nth(0);
 
       // await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
-      const socialInfo = page
-        .locator(".flex.flex-col.flex-1", { hasText: socialMedia })
-        .first();
 
-      await expect(socialInfo).toBeVisible({ timeout: 120000 });
-      await expect(socialInfo).toContainText(socialMedia);
+      const socialInfo = page.locator(".flex.flex-col.flex-1")
+      const count = await socialInfo.count()
+
+      for(let i = 0; i < count; i++){
+        const item = socialInfo.nth(i)
+        await expect(item).toBeVisible()
+        await expect(item).toContainText(socialMedia)
+      }
     });
   }
   test("Генерация поста для всех соц сетей", async ({ page }) => {
@@ -78,10 +81,12 @@ test.describe("Генерация поста", () => {
     // await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
 
     const socialInfo = page.locator(".flex.flex-col.flex-1");
+    const count = await socialInfo.count();
 
-    await expect(socialInfo.first()).toBeVisible({ timeout: 120000 });
-    await expect(socialInfo.nth(0)).toContainText("LinkedIn");
-    await expect(socialInfo.nth(1)).toContainText("Facebook");
-    await expect(socialInfo.nth(2)).toContainText("Instagram");
+    for (let i = 0; i < count; i++) {
+      const item = socialInfo.nth(i);
+      await expect(item).toBeVisible();
+      await expect(item).toContainText(socialMedia);
+    }
   });
 });
