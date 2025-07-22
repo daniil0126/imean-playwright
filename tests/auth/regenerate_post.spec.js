@@ -34,10 +34,9 @@ test.describe("Перегенерация поста", () => {
       await firstUnpublishedItem.locator(".arrow-icon-placeholder").click();
 
       await page
-        .getByRole("button", {
-          name: /Перегенерировать пост|Regenerate post|Постты қайта генерациялау/,
-        })
-        .click();
+        .getByRole("button", 
+          {name: /Перегенерировать пост|Regenerate post|Постты қайта генерациялау/,}
+        ).click();
 
       const loader = page.locator(".ant-spin-dot-holder");
       await loader.waitFor({ state: "detached", timeout: 60000 });

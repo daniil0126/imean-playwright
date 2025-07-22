@@ -5,7 +5,7 @@ import { startActions } from "./helpers/commands";
 const authFile = path.join(__dirname, "../playwright/.auth/user.json");
 
 setup("authenticate", async ({ page }) => {
-  startActions(page, "English", "Sign in by mail");
+  startActions(page, "Русский", "Войти по почте");
 
   await page.goto("https://my.imean.io");
   await page.locator('input[type="email"]').click();
@@ -13,7 +13,7 @@ setup("authenticate", async ({ page }) => {
 
   await page.locator('input[type="password"]').click();
   await page.locator('input[type="password"]').fill("Daniil0126!");
-  await page.getByRole("button", { name: "Continue" }).click();
+  await page.getByRole("button", { name: "Продолжить" }).click();
 
   await page.waitForURL("https://my.imean.io/home");
 

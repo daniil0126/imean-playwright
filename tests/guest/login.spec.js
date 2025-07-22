@@ -8,7 +8,7 @@ const auth = {
   password: "Daniil0126!",
 };
 
-test.describe("Форма логина", () => {
+test.describe.parallel("Форма логина", () => {
   for (const { lang, loginText, continueText } of languages) {
     test(`Вход на языке [${lang}]`, async ({ page }) => {
       const routes = new LoginRoutes();

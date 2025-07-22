@@ -3,7 +3,7 @@ import { startActions } from "../helpers/commands";
 import { RegisterRoutes } from "../helpers/routes";
 import { languages } from "../helpers/constants";
 
-test.describe("Форма регистрации", () => {
+test.describe.parallel("Форма регистрации", () => {
   for (const {
     lang,
     loginText,

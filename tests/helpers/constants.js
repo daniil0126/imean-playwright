@@ -10,6 +10,7 @@ export const languages = [
     emailLabel: "Email Address",
     passwordLabel: "Password",
     notPublishedText: "Not published",
+    createSimilar: "Create a similar post",
   },
   {
     lang: "Русский",
@@ -22,6 +23,7 @@ export const languages = [
     emailLabel: "Адрес электронной почты",
     passwordLabel: "Пароль",
     notPublishedText: "Не опубликован",
+    createSimilar: "Создать похожий пост",
   },
   {
     lang: "Қазақша",
@@ -34,6 +36,7 @@ export const languages = [
     emailLabel: "Электрондық пошта мекенжайы",
     passwordLabel: "Құпиясөз",
     notPublishedText: "Жарияланбаған",
+    createSimilar: "Ұқсас пост жасау",
   },
 ];
 
