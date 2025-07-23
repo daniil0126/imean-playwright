@@ -25,20 +25,11 @@ test.describe("Генерация поста", () => {
       await inputArea.fill(`Короткий пост для ${socialMedia}`);
       await page
         .getByRole("button", {
-          // name: /Создать публикацию|Create a post|Пост жасау/,
           name: "Создать публикацию", exact: true
         })
         .click();
 
       await expect(page).toHaveURL(/\/create-post\/\d+$/, { timeout: 10000 });
-
-      // const postTextBlock = page
-      //   .locator(
-      //     ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
-      //   )
-      //   .nth(0);
-
-      // await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
 
       const socialInfo = page.locator(".flex.flex-col.flex-1")
       const count = await socialInfo.count()
@@ -51,8 +42,6 @@ test.describe("Генерация поста", () => {
     });
   }
   test("Генерация поста для всех соц сетей", async ({ page }) => {
-    // const postMock = new PostGenerateRoutes(/^(?=.*LinkedIn)(?=.*Facebook)(?=.*Instagram).*$/i);
-    // await postMock.setup(page);
     await page.goto("https://my.imean.io/generate-post");
     
     await page.waitForTimeout(1000);
@@ -71,14 +60,6 @@ test.describe("Генерация поста", () => {
       .click();
 
     await expect(page).toHaveURL(/\/create-post\/\d+$/, {timeout: 10000});
-
-    // const postTextBlock = page
-    //   .locator(
-    //     ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
-    //   )
-    //   .nth(0);
-
-    // await expect(postTextBlock).not.toHaveText("", { timeout: 60000 });
 
     const socialInfo = page.locator(".flex.flex-col.flex-1");
     const count = await socialInfo.count();

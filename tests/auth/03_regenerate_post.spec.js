@@ -9,6 +9,7 @@ test.describe("Перегенерация поста", () => {
       await postMock.setup(page);
 
       await page.goto("https://my.imean.io/posts");
+      await page.waitForLoadState('networkidle');
 
       const regex = new RegExp(`^${socialMedia}$`);
       const scheduleSocialMedia = page
@@ -29,7 +30,9 @@ test.describe("Перегенерация поста", () => {
           }),
       });
       const firstUnpublishedItem = scheduleItems.first();
+      await expect(firstUnpublishedItem).toBeVisible({timeout: 30000})
 
+      
       await firstUnpublishedItem.scrollIntoViewIfNeeded();
       await firstUnpublishedItem.locator(".arrow-icon-placeholder").click();
 
@@ -39,23 +42,20 @@ test.describe("Перегенерация поста", () => {
         ).click();
 
       const loader = page.locator(".ant-spin-dot-holder");
-      await loader.waitFor({ state: "detached", timeout: 60000 });
+      await loader.waitFor({ state: "hidden", timeout: 30000 });
 
-      // const postTextBlock = page
-      //   .locator(
-      //     ".justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4"
-      //   )
-      //   .nth(1);
+      const pageInfo = page.locator(
+        '.justify-center.px-5.py-3.mt-2.mb-2.w-11\\/12.m-auto.text-xs.leading-7.text-justify.text-black.rounded-3xl.bg-purple-200.bg-opacity-50.px-4'
+      ).first()
+      await expect(pageInfo).toBeVisible({timeout: 30000})
 
-      // await expect(postTextBlock).not.toHaveText("", { timeout: 120000 });
-
-      const socialInfo = page.locator(".flex.flex-col.flex-1", {
-        hasText: socialMedia,
-      });
+      const socialInfo = page.locator(".flex.flex-col.flex-1");
+      await expect(socialInfo).toContainText(socialMedia, {timeout: 30000})
 
       await socialInfo.scrollIntoViewIfNeeded();
-      await expect(socialInfo).toBeVisible({ timeout: 120000 });
-      await expect(socialInfo).toContainText(socialMedia);
+      await expect(socialInfo).toHaveCount(1, { timeout: 30000 });
+      await page.waitForTimeout(1000);
+      await expect(socialInfo).toBeVisible({ timeout: 30000 });
     });
   }
 //   test('Перегенерация поста для всех соц сетей')
